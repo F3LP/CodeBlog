@@ -52,12 +52,12 @@ public class PostController {
 	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributtes) {
 		if (result.hasErrors()) {
 			attributtes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos.");
-			return "redirect:/novo";
+			return "redirect:novo";
 		}
 
 		post.setData(LocalDate.now());
 		service.save(post);
 		
-		return "redirect:/posts";
+		return "redirect:posts";
 	}
 }
