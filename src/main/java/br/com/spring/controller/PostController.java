@@ -25,7 +25,7 @@ public class PostController {
 		this.service = service;
 	}
 
-	@GetMapping("/posts")
+	@GetMapping("posts")
 	public ModelAndView getPosts() {
 		ModelAndView mv = new ModelAndView("posts");
 		List<Post> posts = service.findAll();
@@ -34,7 +34,7 @@ public class PostController {
 		return mv;
 	}
 
-	@GetMapping("/posts/{id}")
+	@GetMapping("posts/{id}")
 	public ModelAndView getPostDetails(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("postDetails");
 		Post post = service.findById(id);
@@ -43,12 +43,12 @@ public class PostController {
 		return mv;
 	}
 
-	@GetMapping("/novo")
+	@GetMapping("novo")
 	public String getPostForm() {
 		return "postForm";
 	}
 
-	@PostMapping("/novo")
+	@PostMapping("novo")
 	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributtes) {
 		if (result.hasErrors()) {
 			attributtes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos.");
